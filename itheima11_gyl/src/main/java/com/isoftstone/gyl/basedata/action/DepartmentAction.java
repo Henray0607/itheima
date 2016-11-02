@@ -4,6 +4,7 @@ import java.util.List;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -28,8 +29,9 @@ public class DepartmentAction extends BaseAction<Department>{
 	
 	private DepartmentQuery baseQuery = new DepartmentQuery();
 	
+	
 	public String showPageResult(){
-				
+			baseQuery.setCurrentPage(getCurrentPage());
 			PageResult<Department> departments = departmentService.getPageResult(baseQuery);
 			List<Department> lists = departments.getRows();
 			ActionContext.getContext().put("departments", departments);
@@ -39,21 +41,33 @@ public class DepartmentAction extends BaseAction<Department>{
 			return LISTACTION;
 	}
 	
+	public String deleteDepartmentById(){
+		String id = ServletActionContext.getRequest().getParameter("did");
+		
+		departmentService.deleteEntity(Long.parseLong(id));
+		return "showList";
+			
+	}
+	public String addUI(){
+		return ADDUI;
+	}
+	public String addDepartment(){
+		Department department = super.getModel();
+		departmentService.saveEntity(department);
+		return "addDepartment";
+	}
+	public String updateUI(){
+		Long id = Long.parseLong(ServletActionContext.getRequest().getParameter("did"));
+		Department department = this.departmentService.getEntityById(id);
+		ActionContext.getContext().put("department",department);
+		System.out.println(department.getName());
+		return UPDATEUI;
+	}
+	public String updateDepartment(){
+		Department department = super.getModel();
+		this.departmentService.updateEntity(department);
+		return "updateDepartment";
+	}
+	
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 

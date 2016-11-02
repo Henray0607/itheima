@@ -13,6 +13,15 @@ public class BaseAction<T> extends ActionSupport implements ModelDriven<T> {
 
 	private Class classt;
 	private T t;
+	private int currentPage;
+	
+	public int getCurrentPage() {
+		return currentPage;
+	}
+
+	public void setCurrentPage(int currentPage) {
+		this.currentPage = currentPage;
+	}
 
 	public BaseAction() {
 		ParameterizedType type = (ParameterizedType) this.getClass()

@@ -13,7 +13,7 @@ var GylUtils = {
 				linkNextPage:function(){
 					var currentPage = $(this).attr("param");
 					var url= $("body").data("url");
-					window.location.href=url+"?currentPage"+currentPage;
+					window.location.href=url+"?currentPage="+currentPage;
 				}
 			},
 			
