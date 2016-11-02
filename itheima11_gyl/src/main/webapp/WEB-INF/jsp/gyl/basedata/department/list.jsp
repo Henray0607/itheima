@@ -5,6 +5,9 @@
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <title>无标题文档</title>
 <script type="text/javascript">
+	$().ready(function(){
+		$("body").data("url","departmentAction_showPageResult.action");
+	});
 
 </script>
 </head>
