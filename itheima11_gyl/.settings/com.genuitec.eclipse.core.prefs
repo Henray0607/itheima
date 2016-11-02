@@ -1,0 +1,3 @@
+eclipse.preferences.version=1
+validator.Checked=src/main/webapp/WEB-INF/jsp/gyl/basedata/department/list.jsp,src/main/webapp/WEB-INF/jsp/gyl/common/common.jsp
+validator.Unchecked=
