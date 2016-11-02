@@ -33,11 +33,17 @@
 							<input type="button" value="修改"/>
 						</td>
 	                </tr>
-                </s:iterator>
-               	
-        </td>
-    </tr>
-</table>
+             	 </s:iterator>
+			</table>
+			<p style="width:900px; height:20px;font-size:12px;">
+				<span class="page" style="float:right">
+				<input type="button" param="1" flag="firstPage" value="首页"/>&nbsp;<input type="button" flag="prePage" param="${departments.currentPage-1}" value="上一页" />&nbsp;<input type="button" param="${departments.currentPage+1}" flag="nextPage" last="${departments.totalPages}" value="下一页"/>&nbsp;<input type="button" param="${departments.totalPages}" flag="lastPage" value="尾页"/>&nbsp;<span>转到第<input name="basedataQuery.currentPage" id="pageNo" type="text" value="${basedataQuery.currentPage}" size="4" style="height:16px; width:28px; border:1px solid #999999; background:#FFF; border-radius:0;" />页 </span>&nbsp;&nbsp;<input type="button" value="转" style=" padding:0 10px;"/>
+					</span>&nbsp;&nbsp;共有${departments.totalRows}条记录，当前第 ${departments.currentPage}/${departments.totalPages}页
+			</p>
+	        </td>
+	    </tr>
+
+
 <div>
     <a href="departmentAction_addUI.action"><img src="${pageContext.request.contextPath}/images/createNew.png" /></a>
 </div>
