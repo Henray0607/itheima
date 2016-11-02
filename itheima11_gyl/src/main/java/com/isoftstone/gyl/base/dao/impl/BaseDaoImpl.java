@@ -17,7 +17,6 @@ import org.hibernate.Session;
 import org.hibernate.metadata.ClassMetadata;
 import org.springframework.orm.hibernate3.HibernateCallback;
 import org.springframework.orm.hibernate3.HibernateTemplate;
-import org.springframework.stereotype.Repository;
 
 import com.isoftstone.gyl.base.dao.BaseDao;
 import com.isoftstone.gyl.query.BaseQuery;

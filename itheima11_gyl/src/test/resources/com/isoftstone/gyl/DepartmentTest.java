@@ -4,9 +4,7 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-import com.isoftstone.gyl.base.dao.BaseDao;
 import com.isoftstone.gyl.basedata.dao.DepartmentDao;
-import com.isoftstone.gyl.basedata.dao.impl.DepartmentDaoImpl;
 import com.isoftstone.gyl.basedata.service.DepartmentService;
 import com.isoftstone.gyl.domain.basedata.Department;
 import com.isoftstone.gyl.query.PageResult;

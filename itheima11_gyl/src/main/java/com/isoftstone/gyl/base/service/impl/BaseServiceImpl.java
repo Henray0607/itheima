@@ -2,7 +2,6 @@ package com.isoftstone.gyl.base.service.impl;
 
 import java.io.Serializable;
 
-import org.hibernate.annotations.Source;
 import org.springframework.transaction.annotation.Transactional;
 
 import com.isoftstone.gyl.base.dao.BaseDao;
