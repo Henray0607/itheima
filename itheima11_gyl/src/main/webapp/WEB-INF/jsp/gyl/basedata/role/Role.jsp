@@ -20,6 +20,5 @@
          <li id="deleteRole" style="background: url(${pageContext.request.contextPath}/style/images/jian.jpg) 10px 9px no-repeat;border-bottom:1px solid #8ab2e6;cursor:pointer;">删除角色</li>
          <li id="updateRole" style="background: url(${pageContext.request.contextPath}/style/images/jian.jpg) 10px 9px no-repeat;border-bottom:1px solid #8ab2e6;cursor:pointer;">修改角色</li>
        </ul>
-</div>
 </BODY>
 </html>

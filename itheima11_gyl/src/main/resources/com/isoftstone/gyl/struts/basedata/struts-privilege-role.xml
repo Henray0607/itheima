@@ -10,9 +10,6 @@
 		<action name="roleAction_*" method="{1}" class="roleAction">
 			<result name="success" type="json"></result>
 		</action>
-		<action name="roleAction_addRole" method="addRole" class="roleAction">
-			<result name="ok" type="json"></result>
-		</action>
 	</package>
 </struts>
 	

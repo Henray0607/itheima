@@ -8,7 +8,7 @@ var roleTree={
 		},
 		setting:{
 			isSimpleData: true,
-			treeNodeKey: "mid",
+			treeNodeKey: "rid",
 			treeNodeParentKey: "pid",
 			showLine: true,
 			root:{ 
@@ -40,29 +40,56 @@ var roleTree={
 		},
 		init:{
 			initEvent:function(){
+				//增加子节点
 				$("#addRole").unbind("click");
 				$("#addRole").bind("click",function(){
 					var roleName = window.prompt();
 					var treeNode = roleTree.data.treeNode;
-					
 					if(roleName){
 						var param = {
 							name:roleName,
-							pid:treeNode,
+							pid:treeNode.rid,
 							isParent:false
 						};
-						$().post("roleAction_addRole.action",param,function(data){
-							alert(data.rid);
+						$.post("roleAction_addRole.action",param,function(data){
 							var newtreeNode ={
 								rid:data.rid,
 								name:roleName,
 								pid:roleTree.data.treeNode.rid,
 								isParent:false
 							} ;
-							roleTree.data.zTreePlugin.addNode(roleTree.data.treeNode,newtreeNode,true);
+							roleTree.data.zTreePlugin.addNodes(roleTree.data.treeNode,newtreeNode,true);
 						});
 					}
 				});
+				//删除节点
+				$("#deleteRole").unbind("click");
+				$("#deleteRole").bind("click",function(){
+					var node = roleTree.data.treeNode;
+					$.post("roleAction_deleteRole.action?rid="+node.rid,null,function(){
+						roleTree.data.zTreePlugin.removeNode(node);
+					});
+					$("#contextMenu").hide();
+				});
+				//修改
+				$("#updateRole").unbind("click");
+				$("#updateRole").bind("click",function(){
+					$("#contextMenu").hide();
+					var name = window.prompt("name","");
+					var rid = window.prompt("rid","");
+					var data={
+						rid:rid,
+						name:name,
+						pid:roleTree.data.treeNode.pid,
+						isParent:roleTree.data.treeNode.isParent
+					};
+					if(name&&rid){
+						$.post("url",data,function(){
+							alert("success")
+						});
+					}
+				});
+				
 			}
 		}
 		
@@ -70,11 +97,11 @@ var roleTree={
 
 $().ready(function(){
 	roleTree.loadRoleTree();
-	/*$("#contextMenu").hover(function(){
+	$("#contextMenu").hover(function(){
 		//进入该区域的事件
 		
 	},function(){
 		setTimeout(function(){$("#contextMenu").hide()},500)
-	});*/
+	});
 	roleTree.init.initEvent();
 });

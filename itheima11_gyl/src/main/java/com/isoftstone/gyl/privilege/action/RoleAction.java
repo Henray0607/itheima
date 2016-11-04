@@ -5,6 +5,7 @@ import java.util.Collection;
 import javax.annotation.Resource;
 
 import org.apache.commons.beanutils.BeanUtilsBean;
+import org.apache.struts2.ServletActionContext;
 import org.codehaus.jackson.map.util.BeanUtil;
 import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Controller;
@@ -31,11 +32,26 @@ public class RoleAction extends BaseAction<Role>{
 		return SUCCESS;
 	}
 	public String addRole(){
-		System.out.println("saving ROLE");
+		
 		Role role = new Role();
 		BeanUtils.copyProperties(this.getModel(), role);
 		this.roleService.saveEntity(role);
 		ActionContext.getContext().getValueStack().push(role);
+		return SUCCESS;
+	}
+	public String deleteRole(){
+		System.out.println("removing ROLE");
+		Long id = Long.parseLong(ServletActionContext.getRequest().getParameter("rid"));
+		this.roleService.deleteEntity(id);
+		return SUCCESS;
+	}
+	public String updateRole(){
+		System.out.println("update ROLE");
+		Long id = Long.parseLong(ServletActionContext.getRequest().getParameter("rid"));
+		Role role= this.roleService.getEntityById(id);
+		role.setName(this);
+		
+		this.roleService.deleteEntity(id);
 		return SUCCESS;
 	}
 	
