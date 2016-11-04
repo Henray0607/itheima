@@ -1,6 +1,7 @@
 package com.isoftstone.gyl.base.service;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import com.isoftstone.gyl.query.BaseQuery;
 import com.isoftstone.gyl.query.PageResult;
@@ -13,5 +14,5 @@ public interface BaseService<T> {
 	public T getEntityById(Serializable id);
 	public void deleteEntitiesByIds(Serializable[] ids);
 	public void deleteEntity(Serializable id);
-	
+	public Collection<T> getEntities();
 }

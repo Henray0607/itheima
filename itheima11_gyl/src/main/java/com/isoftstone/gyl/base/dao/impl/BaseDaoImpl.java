@@ -165,5 +165,20 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 			
 		});
 	}
+	@Override
+	public Collection<T> getEntities() {
+
+		return this.hibernateTemplate.execute(new HibernateCallback<Collection<T>>() {
+
+			@Override
+			public Collection<T> doInHibernate(Session session) throws HibernateException,
+					SQLException {
+				
+				Query query = session.createQuery("from "+classt.getSimpleName());
+				Collection<T> ts = query.list();
+				return ts;
+			}
+		});
+	}
 
 }

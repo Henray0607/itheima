@@ -43,6 +43,10 @@ public interface BaseDao<T> {
 	 * @return 
 	 * */
 	public int getCount(final BaseQuery baseQuery);
-	
-	
+	/**
+	 * 查询所有记录
+	 * @return
+	 * */
+	public Collection<T> getEntities();
+	 
 }

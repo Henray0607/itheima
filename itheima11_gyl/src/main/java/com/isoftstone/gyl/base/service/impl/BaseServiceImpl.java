@@ -1,6 +1,7 @@
 package com.isoftstone.gyl.base.service.impl;
 
 import java.io.Serializable;
+import java.util.Collection;
 
 import org.springframework.transaction.annotation.Transactional;
 
@@ -48,6 +49,12 @@ public abstract class BaseServiceImpl<T> implements BaseService<T>{
 	@Override
 	public void deleteEntity(Serializable id) {
 		this.getBaseDao().deleteEntry(id);
+	}
+
+	@Override
+	public Collection<T> getEntities() {
+		// TODO Auto-generated method stub
+		return this.getBaseDao().getEntities();
 	}
 
 }

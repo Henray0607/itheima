@@ -1,6 +1,9 @@
 package com.isoftstone.gyl.domain.basedata;
 
 import java.io.Serializable;
+import java.util.Set;
+
+import com.isoftstone.gyl.domain.privilege.Role;
 
 public class User implements Serializable{
 
@@ -11,6 +14,16 @@ public class User implements Serializable{
 	private String email;
 	private String sex;
 	private Department department;
+	private Set<Role> roles;
+	
+	
+	
+	public Set<Role> getRoles() {
+		return roles;
+	}
+	public void setRoles(Set<Role> roles) {
+		this.roles = roles;
+	}
 	public Long getUid() {
 		return uid;
 	}

@@ -13,5 +13,11 @@
 		<property name="sex" length="10"></property>
 		
 		<many-to-one name="department" column="did" lazy="false" class="com.isoftstone.gyl.domain.basedata.Department"></many-to-one>
+		<set name="roles" lazy="false" table="user_role">
+			<key>
+				<column name="uid"></column>
+			</key>
+			<many-to-many class="com.isoftstone.gyl.domain.privilege.Role" column="rid"></many-to-many>		
+		</set>
 	</class>
 </hibernate-mapping>
