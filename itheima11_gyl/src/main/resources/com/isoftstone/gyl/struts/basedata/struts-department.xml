@@ -11,6 +11,8 @@
 			<result name="listAction">WEB-INF/jsp/gyl/basedata/department/list.jsp</result>
 			<result name="addUI">WEB-INF/jsp/gyl/basedata/department/addDepartment.jsp</result>
 			<result name="addDepartment" type="redirect">departmentAction_showPageResult.action</result>
+			<result name="showPageResult" type="redirect">departmentAction_showPageResult.action</result>
+		
 			<result name="updateUI">WEB-INF/jsp/gyl/basedata/department/updateDepartment.jsp</result>
 			<result name="updateDepartment" type="redirect">departmentAction_showPageResult.action</result>
 		</action>

@@ -17,6 +17,12 @@ import com.isoftstone.gyl.query.basedata.DepartmentQuery;
 
 public class SpringTest {
 
+	
+	@Test
+	public void testSessionFactory(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("com/isoftstone/gyl/spring/applicationContext.xml");
+		SessionFactory sessionFactory= (SessionFactory)context.getBean("sessionFactory");
+	}
 	@Test
 	public void testSpring(){
 

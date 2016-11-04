@@ -18,7 +18,7 @@ public abstract class BaseQuery {
 	/**
 	 * 一页显示的条数
 	 */
-	private int pageSize = 5;
+	private int pageSize = 4;
 	
 	
 	public int getCurrentPage() {

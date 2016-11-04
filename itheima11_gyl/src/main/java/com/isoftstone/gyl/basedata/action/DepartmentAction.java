@@ -32,12 +32,13 @@ public class DepartmentAction extends BaseAction<Department>{
 	
 	public String showPageResult(){
 			baseQuery.setCurrentPage(getCurrentPage());
+			System.out.println("current page is: "+baseQuery.getCurrentPage());
 			PageResult<Department> departments = departmentService.getPageResult(baseQuery);
 			List<Department> lists = departments.getRows();
 			ActionContext.getContext().put("departments", departments);
-		for (Department department : lists) {
+		/*for (Department department : lists) {
 			System.out.println(department.getName());
-		}
+		}*/
 			return LISTACTION;
 	}
 	
@@ -67,6 +68,20 @@ public class DepartmentAction extends BaseAction<Department>{
 		Department department = super.getModel();
 		this.departmentService.updateEntity(department);
 		return "updateDepartment";
+	}
+	//通过ids删除多行数据
+
+	public String deleteDepartmentByIds(){
+		String ids = ServletActionContext.getRequest().getParameter("ids");
+		System.out.println(ids);
+		String[] str= ids.split("_");
+		Integer[] dids = new Integer[str.length];
+		for (int i=0;i<str.length;i++) {
+			dids[i]=Integer.parseInt(str[i]);
+		}
+		this.departmentService.deleteEntitiesByIds(dids);
+		return "showPageResult";
+			
 	}
 	
 }

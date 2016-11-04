@@ -1,4 +1,4 @@
-package com.isoftstone.gyl;
+package com.isoftstone.gyl.basedata;
 
 import org.junit.Test;
 import org.springframework.context.ApplicationContext;
