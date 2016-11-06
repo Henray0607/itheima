@@ -66,9 +66,20 @@ var roleTree={
 				$("#deleteRole").unbind("click");
 				$("#deleteRole").bind("click",function(){
 					var node = roleTree.data.treeNode;
-					$.post("roleAction_deleteRole.action?rid="+node.rid,null,function(){
-						roleTree.data.zTreePlugin.removeNode(node);
-					});
+					if(node.isParent){//判断是否为父节点
+						//是附节点
+						var flag = window.confirm("您删除的是父节点!确定删除吗？");
+						if(flag){
+							$.post("roleAction_deleteParentNode.action?rid="+node.rid,null,function(){
+								roleTree.data.zTreePlugin.removeNode(node);
+							});	
+						}						
+					}else{
+						//不是父节点
+						$.post("roleAction_deleteRole.action?rid="+node.rid,null,function(){
+							roleTree.data.zTreePlugin.removeNode(node);
+						});
+					}
 					$("#contextMenu").hide();
 				});
 				//修改
@@ -76,16 +87,23 @@ var roleTree={
 				$("#updateRole").bind("click",function(){
 					$("#contextMenu").hide();
 					var name = window.prompt("name","");
-					var rid = window.prompt("rid","");
 					var data={
-						rid:rid,
-						name:name,
-						pid:roleTree.data.treeNode.pid,
-						isParent:roleTree.data.treeNode.isParent
+						rid:roleTree.data.treeNode.rid,
+						name:name
 					};
-					if(name&&rid){
-						$.post("url",data,function(){
-							alert("success")
+					if(name){
+						$.post("roleAction_updateRole.action",data,function(data){
+						/*	var newtreeNode ={
+									rid:1,
+									name:data.name,
+									pid:0,
+									isParent:true
+							} ;*/
+							
+							var node = roleTree.data.treeNode;
+							node.name=data.name;
+							roleTree.data.zTreePlugin.updateNode(node,true);
+							
 						});
 					}
 				});

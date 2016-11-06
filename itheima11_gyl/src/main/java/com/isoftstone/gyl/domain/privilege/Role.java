@@ -13,6 +13,16 @@ public class Role implements Serializable{
 	private Boolean isParent;
 	
 	private Set<User> users;
+	private Set<Privilege> privileges;
+	
+
+	public Set<Privilege> getPrivileges() {
+		return privileges;
+	}
+
+	public void setPrivileges(Set<Privilege> privileges) {
+		this.privileges = privileges;
+	}
 
 	public Long getRid() {
 		return rid;

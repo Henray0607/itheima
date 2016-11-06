@@ -14,12 +14,18 @@ import com.isoftstone.gyl.privilege.service.RoleService;
 public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleService{
 
 	@Resource(name="roleDao")
-	private BaseDao roleDao;
+	private RoleDao<Role> roleDao;
 	
 	@Override
 	public BaseDao getBaseDao() {
 		// TODO Auto-generated method stub
 		return this.roleDao;
+	}
+
+	@Override
+	public void deleteParentNode(Long pid) {
+		// TODO Auto-generated method stub
+		this.roleDao.deleteParentNode(pid);
 	}
 
 }

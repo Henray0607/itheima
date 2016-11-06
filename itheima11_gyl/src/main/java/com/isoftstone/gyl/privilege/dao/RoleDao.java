@@ -4,4 +4,6 @@ import com.isoftstone.gyl.base.dao.BaseDao;
 
 public interface RoleDao<Role> extends BaseDao<Role> {
 
+	
+	public void deleteParentNode(Long pid);
 }

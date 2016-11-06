@@ -15,6 +15,7 @@
 	<!-- 权限模块 -->
 	<include file="com/isoftstone/gyl/struts/basedata/struts-privilege-menuitem.xml"></include>
 	<include file="com/isoftstone/gyl/struts/basedata/struts-privilege-role.xml"></include>
+	<include file="com/isoftstone/gyl/struts/basedata/struts-privilege-privilege.xml"></include>
 	<!-- 转发 -->
 	
 	<include file="com/isoftstone/gyl/struts/forword/struts-forword.xml"></include>

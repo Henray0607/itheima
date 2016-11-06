@@ -6,11 +6,15 @@
 <struts>
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<constant name="struts.devMode" value="true"/>
-	<package name="role" namespace="/" extends="json-default">
-		<action name="roleAction_*" method="{1}" class="roleAction">
+	<package name="privilege" namespace="/" extends="json-default">
+		<action name="privilegeAction_*" method="{1}" class="privilegeAction">
 			<result name="success" type="json"></result>
 		</action>
 	</package>
-	
+	<package name="rolePrivilege" namespace="/" extends="struts-default">
+		<action name="privilegeAction_showRoles" method="showRoles" class="privilegeAction">
+			<result name="ok">WEB-INF/jsp/gyl/privilege/role_privilege.jsp</result>
+		</action>
+	</package>
 </struts>
 	
