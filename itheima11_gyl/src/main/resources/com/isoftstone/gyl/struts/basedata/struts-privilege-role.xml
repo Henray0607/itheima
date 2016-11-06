@@ -11,6 +11,11 @@
 			<result name="success" type="json"></result>
 		</action>
 	</package>
-	
+
+	<package name="user_role" namespace="/" extends="struts-default">
+		<action name="roleAction_showUserRolePage" method="showUserRolePage" class="roleAction">
+			<result name="ok">WEB-INF/jsp/gyl/privilege/user_role.jsp</result>
+		</action>
+	</package>	
 </struts>
 	

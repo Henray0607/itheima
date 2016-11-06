@@ -16,5 +16,13 @@
 			<result name="ok">WEB-INF/jsp/gyl/privilege/role_privilege.jsp</result>
 		</action>
 	</package>
+	
+	<!-- just for test -->
+	<package name="test" namespace="/" extends="json-default">
+		<action name="testAction" method="getParam" class="com.isoftstone.gyl.privilege.action.TestAction">
+			<result name="success" type="json"></result>
+		</action>
+	</package>
+
 </struts>
 	

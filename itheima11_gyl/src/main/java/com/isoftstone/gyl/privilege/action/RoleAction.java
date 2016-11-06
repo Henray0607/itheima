@@ -24,6 +24,11 @@ public class RoleAction extends BaseAction<Role>{
 	@Resource(name="roleService")
 	private RoleService roleService;
 	
+	//转到设置角色页面
+	public String showUserRolePage(){
+		
+		return "ok";
+	}
 	public String showRoleTree(){
 	
 		

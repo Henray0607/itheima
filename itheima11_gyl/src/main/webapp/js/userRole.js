@@ -1,9 +1,9 @@
-var rolePrivilege={
+var user_Role={
 	/**
 	 * 放数据
 	 * */
 		data:{
-			role:{
+			user:{
 				name:"",
 				rid:""
 			},
@@ -23,14 +23,14 @@ var rolePrivilege={
 			//角色操作
 			roleOpt:{
 				showName:function(){
-					$("#roleImage").text("角色名："+rolePrivilege.data.role.name);
+					$("#roleImage").text("角色名："+user_Role.data.role.name);
 				}
 			},
 			//权限树操作
 			privilegeTree:{
 			    setting:{
 			    		isSimpleData: true,
-			    		treeNodeKey: "id",
+			    		treeNodeKey: "rid",
 			    		treeNodeParentKey: "pid",
 			    		showLine: true,
 			    		checkable:true,
@@ -42,11 +42,11 @@ var rolePrivilege={
 			        loadPrivilegeTree:function(){
 			        	$.post("privilegeAction_showPrivilegeTree.action",null,function(data){
 			        		
-			        		rolePrivilege.data.zTreeplugin = $("#privilegeTree").zTree(rolePrivilege.opt.privilegeTree.setting,data);
+			        		user_Role.data.zTreeplugin = $("#privilegeTree").zTree(user_Role.opt.privilegeTree.setting,data);
 			        	});
 			        },
 			        getSelectNodesIds:function(){
-			        	var nodes = rolePrivilege.data.zTreeplugin.getCheckedNodes();
+			        	var nodes = user_Role.data.zTreeplugin.getCheckedNodes();
 			        	var str="";
 			        	for(var i=0;i<nodes.length;i++){
 			        		if(i==nodes.length-1){
@@ -56,22 +56,22 @@ var rolePrivilege={
 			        		}
 			        		
 			        	}
-			        	rolePrivilege.data.checkedStr=str;
+			        	user_Role.data.checkedStr=str;
 			        },
-			        saveRolePrivilege:function(){
-			        	rolePrivilege.opt.privilegeTree.getSelectNodesIds();
+			        saveuser_Role:function(){
+			        	user_Role.opt.privilegeTree.getSelectNodesIds();
 			        	var param={
-			        			rid:rolePrivilege.data.role.rid,
-			        			ids:rolePrivilege.data.checkedStr,
+			        			rid:user_Role.data.role.rid,
+			        			ids:user_Role.data.checkedStr,
 			        	};
-			        	$.post("privilegeAction_saveRolePrivilege.action",param,function(data){
+			        	$.post("privilegeAction_saveuser_Role.action",param,function(data){
 			        		alert("success");
 			        	});
 			        },
 			        privilegeTreeEcho:function(){
-			        	var rid = rolePrivilege.data.role.rid
+			        	var rid = user_Role.data.role.rid
 			        	$.post("privilegeAction_privilegeEcho.action?rid="+rid,null,function(data){
-			        		 rolePrivilege.data.zTreeplugin = $("#privilegeTree").zTree(rolePrivilege.opt.privilegeTree.setting,data);
+			        		 user_Role.data.zTreeplugin = $("#privilegeTree").zTree(user_Role.opt.privilegeTree.setting,data);
 			        		
 			        	});
 			        	
@@ -87,32 +87,26 @@ var rolePrivilege={
 			initData:function(){
 				var name = $(this).parent().siblings("td:first").text();
 				var rid =  $(this).parent().siblings("input[type='hidden']").attr("value");
-				rolePrivilege.data.role.name=name;
-				rolePrivilege.data.role.rid=rid;
+				user_Role.data.role.name=name;
+				user_Role.data.role.rid=rid;
 			},
 			initEvent:function(){
 				$("a").each(function(){
 					$(this).css("cursor", "pointer")
-					if($(this).text="设置权限"){
+					if($(this).text="选择角色"){
 						$(this).unbind("click");
 						$(this).bind("click",function(){
 							//显示div
-							rolePrivilege.opt.divOpt.show();
-							rolePrivilege.init.initData.call(this);
 							//加载权限树
-							rolePrivilege.opt.roleOpt.showName();
-							$("#loading").hide();
-							rolePrivilege.opt.privilegeTree.loadPrivilegeTree();
 							//
 							//对角色原有权限回显
-							rolePrivilege.opt.privilegeTree.privilegeTreeEcho();
 						});
 						$("#allchecked").unbind("click");
 						$("#allchecked").bind("click",function(){
 							if($(this).attr("checked")){
-								rolePrivilege.data.zTreeplugin.checkAllNodes(true);
+								user_Role.data.zTreeplugin.checkAllNodes(true);
 							}else{
-								rolePrivilege.data.zTreeplugin.checkAllNodes(false);
+								user_Role.data.zTreeplugin.checkAllNodes(false);
 							}
 						});
 					}
@@ -122,10 +116,10 @@ var rolePrivilege={
 		}
 }
 $().ready(function(){
-	rolePrivilege.init.initEvent();
+	user_Role.init.initEvent();
 	$("#savePrivilege").css("cursor", "pointer")
 	$("#savePrivilege").unbind("click");
 	$("#savePrivilege").bind("click",function(){
-		rolePrivilege.opt.privilegeTree.saveRolePrivilege();
+		user_Role.opt.privilegeTree.saveuser_Role();
 	});
 });

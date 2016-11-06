@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript" src="js/jquery-1.4.2.js"></script>
+
+<script type="text/javascript">
+	$().ready(function(){
+		var param={
+				rid:32,
+				str:"str"
+		}
+		$.post("testAction.action",param,function(data){
+			alert(data.rid)
+		});
+		
+	});
+	
+</script>
+</head>
+
+<body>
+
+
+	<div>
+		<input id="ajaxButton" type="button" onclick="ajaxAction()" value="ajax ssubmit"/>
+	</div>
+
+</body>
+</html>

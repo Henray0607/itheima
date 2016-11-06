@@ -1,6 +1,8 @@
 package com.isoftstone.gyl.privilege.action;
 
 import java.util.Collection;
+import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import javax.annotation.Resource;
@@ -54,14 +56,39 @@ public class PrivilegeAction extends BaseAction<Role>{
 	}
 	
 	public String saveRolePrivilege(){
+		System.out.println("开始保存权限privilege。。。。");
 		String strIds = ServletActionContext.getRequest().getParameter("ids");
+		System.out.println(strIds);
 		String[] ids = strIds.split("_");
 		
-		Set<Privilege> privileges = (Set<Privilege>) this.privilegeService.getPrivilegeByIds(ids);
+		List<Privilege> privileges = (List<Privilege>) this.privilegeService.getPrivilegeByIds(ids);
+		String riid = ServletActionContext.getRequest().getParameter("rid");
+		System.out.println(this.rid);
+		System.out.println(riid);
+		Role role = this.roleService.getEntityById(Long.parseLong(riid));
 		
-		Role role = this.roleService.getEntityById(rid);
-		role.setPrivileges(privileges);
+		Set<Privilege> privilegesSet = new HashSet<Privilege>();
+		privilegesSet.addAll(privileges);
+		role.setPrivileges(privilegesSet);
 		this.roleService.updateEntity(role);
+
+		return SUCCESS;
+	}
+	
+	public String privilegeEcho(){
+		String rid = ServletActionContext.getRequest().getParameter("rid");
+		Role role = this.roleService.getEntityById(Long.parseLong(rid));
+		Set<Privilege> privilegesChecked = role.getPrivileges();
+		
+		Collection<Privilege> privilegesAll = this.privilegeService.getEntities();
+		for (Privilege privilege : privilegesChecked) {
+			for (Privilege p : privilegesAll) {
+				if(privilege.getId()==p.getId()){
+					p.setChecked(true);
+				}
+			}
+		}
+		ActionContext.getContext().getValueStack().push(privilegesAll);
 		return SUCCESS;
 	}
 }
