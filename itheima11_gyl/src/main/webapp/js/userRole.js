@@ -4,8 +4,8 @@ var user_Role={
 	 * */
 		data:{
 			user:{
-				name:"",
-				rid:""
+				username:"",
+				uid:""
 			},
 			checkedStr:"",
 			zTreeplugin:""
@@ -20,14 +20,14 @@ var user_Role={
 					$("div:hidden").show();
 				}
 			},
-			//角色操作
-			roleOpt:{
+			//用户操作
+			userOpt:{
 				showName:function(){
-					$("#roleImage").text("角色名："+user_Role.data.role.name);
+					$("#userImage").text("用户名："+user_Role.data.user.username);
 				}
 			},
-			//权限树操作
-			privilegeTree:{
+			//角色树操作
+			roleTree:{
 			    setting:{
 			    		isSimpleData: true,
 			    		treeNodeKey: "rid",
@@ -39,42 +39,51 @@ var user_Role={
 			    			nodes:[]
 			    		}
 			        },
-			        loadPrivilegeTree:function(){
-			        	$.post("privilegeAction_showPrivilegeTree.action",null,function(data){
+			        //加载角色树
+			        loadRoleTree:function(){
+			        	$.post("roleAction_showRoleTree.action",null,function(data){
+			        		user_Role.data.zTreeplugin = $("#roleTree").zTree(user_Role.opt.roleTree.setting,data);
 			        		
-			        		user_Role.data.zTreeplugin = $("#privilegeTree").zTree(user_Role.opt.privilegeTree.setting,data);
 			        	});
 			        },
+			        //得到选中的nodes
 			        getSelectNodesIds:function(){
 			        	var nodes = user_Role.data.zTreeplugin.getCheckedNodes();
-			        	var str="";
+			        	var str = "";
 			        	for(var i=0;i<nodes.length;i++){
 			        		if(i==nodes.length-1){
-			        			str = str+nodes[i].id;
+			        			str = str+nodes[i].rid;
 			        		}else{
-			        			str = str+nodes[i].id+"_";
+			        			str = str+nodes[i].rid+"_";
 			        		}
-			        		
 			        	}
-			        	user_Role.data.checkedStr=str;
+			        	user_Role.data.checkedStr = str;
 			        },
-			        saveuser_Role:function(){
-			        	user_Role.opt.privilegeTree.getSelectNodesIds();
-			        	var param={
-			        			rid:user_Role.data.role.rid,
-			        			ids:user_Role.data.checkedStr,
-			        	};
-			        	$.post("privilegeAction_saveuser_Role.action",param,function(data){
-			        		alert("success");
-			        	});
+			        //保存user-role关系
+			        saveUser_Role:function(){
+			        	$("#saveRole").css("cursor", "pointer")
+			        	$("#saveRole").unbind("click")
+			        	$("#saveRole").bind("click",function(){
+			        		user_Role.opt.roleTree.getSelectNodesIds();
+			        		var param={
+			        			uid:user_Role.data.user.uid,
+			        			rids:user_Role.data.checkedStr
+			        		};
+			        		$.post("roleAction_saveUserRole.action",param,function(){
+			        			alert("保存成功")
+			        		});
+			        	})
 			        },
-			        privilegeTreeEcho:function(){
-			        	var rid = user_Role.data.role.rid
-			        	$.post("privilegeAction_privilegeEcho.action?rid="+rid,null,function(data){
-			        		 user_Role.data.zTreeplugin = $("#privilegeTree").zTree(user_Role.opt.privilegeTree.setting,data);
-			        		
-			        	});
+			        //回显角色树
+			        roleTreeEcho:function(){
+			        	var uid = user_Role.data.user.uid;
 			        	
+			        	$.post("roleAction_userRoleEcho.action?uid="+uid,null,function(data){
+			        		setTimeout(function(){
+			        			
+			        			user_Role.data.zTreeplugin = $("#roleTree").zTree(user_Role.opt.roleTree.setting,data);
+			        		},500);
+			        	});
 			        }
 			        
 			    	
@@ -85,10 +94,10 @@ var user_Role={
 		 * */
 		init:{
 			initData:function(){
-				var name = $(this).parent().siblings("td:first").text();
-				var rid =  $(this).parent().siblings("input[type='hidden']").attr("value");
-				user_Role.data.role.name=name;
-				user_Role.data.role.rid=rid;
+				var username = $(this).parent().siblings("td:first").text();
+				var uid =  $(this).parent().siblings("input[type='hidden']").attr("value");
+				user_Role.data.user.username=username;
+				user_Role.data.user.uid=uid;
 			},
 			initEvent:function(){
 				$("a").each(function(){
@@ -96,10 +105,16 @@ var user_Role={
 					if($(this).text="选择角色"){
 						$(this).unbind("click");
 						$(this).bind("click",function(){
+							//显示username
+							user_Role.init.initData.call(this)
+							user_Role.opt.userOpt.showName();
 							//显示div
-							//加载权限树
-							//
+							user_Role.opt.divOpt.show();
+							//加载角色树
+							user_Role.opt.roleTree.loadRoleTree();
+							$("#loading").hide();
 							//对角色原有权限回显
+							user_Role.opt.roleTree.roleTreeEcho();
 						});
 						$("#allchecked").unbind("click");
 						$("#allchecked").bind("click",function(){
@@ -117,9 +132,5 @@ var user_Role={
 }
 $().ready(function(){
 	user_Role.init.initEvent();
-	$("#savePrivilege").css("cursor", "pointer")
-	$("#savePrivilege").unbind("click");
-	$("#savePrivilege").bind("click",function(){
-		user_Role.opt.privilegeTree.saveuser_Role();
-	});
+	user_Role.opt.roleTree.saveUser_Role();
 });

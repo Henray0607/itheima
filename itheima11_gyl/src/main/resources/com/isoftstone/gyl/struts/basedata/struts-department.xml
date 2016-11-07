@@ -6,7 +6,7 @@
 <struts>
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<constant name="struts.devMode" value="true"/>
-	<package name="department" namespace="/" extends="struts-default">
+	<package name="department" namespace="/" extends="session_privilege">
 		<action name="departmentAction_*" method="{1}" class="departmentAction">
 			<result name="listAction">WEB-INF/jsp/gyl/basedata/department/list.jsp</result>
 			<result name="addUI">WEB-INF/jsp/gyl/basedata/department/addDepartment.jsp</result>

@@ -11,10 +11,20 @@ public class Role implements Serializable{
 	private Long pid;
 	private String name;
 	private Boolean isParent;
+	private Boolean checked;
+	
 	
 	private Set<User> users;
 	private Set<Privilege> privileges;
 	
+
+	public Boolean getChecked() {
+		return checked;
+	}
+
+	public void setChecked(Boolean checked) {
+		this.checked = checked;
+	}
 
 	public Set<Privilege> getPrivileges() {
 		return privileges;

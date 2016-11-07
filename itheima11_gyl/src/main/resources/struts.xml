@@ -6,9 +6,8 @@
 <struts>
 	<constant name="struts.ui.theme" value="simple"></constant>
 	<constant name="struts.devMode" value="true"/>
-	<!-- 
-		基础数据
-	 -->
+	
+	<!-- 基础数据 -->
 	<include file="com/isoftstone/gyl/struts/basedata/struts-department.xml"></include>
 	<include file="com/isoftstone/gyl/struts/basedata/struts-user.xml"></include>
 	
@@ -16,9 +15,17 @@
 	<include file="com/isoftstone/gyl/struts/basedata/struts-privilege-menuitem.xml"></include>
 	<include file="com/isoftstone/gyl/struts/basedata/struts-privilege-role.xml"></include>
 	<include file="com/isoftstone/gyl/struts/basedata/struts-privilege-privilege.xml"></include>
-	<!-- 转发 -->
 	
+	<!-- 转发 -->
 	<include file="com/isoftstone/gyl/struts/forword/struts-forword.xml"></include>
+	
+	<!-- 用户登录 -->
+	<include file="com/isoftstone/gyl/struts/login/struts-login.xml"></include>	
+	
+	<!-- 声明拦截器 -->
+	<include file="com/isoftstone/gyl/struts/interceptor/struts-interceptor.xml"></include>	
+	
+	
 	
 </struts>
 	

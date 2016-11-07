@@ -8,9 +8,12 @@
 	<constant name="struts.devMode" value="true"/>
 	
 	<package name="forword" extends="struts-default" namespace="/">
-		<action name="forwordAction" class="com.isoftstone.gyl.forword.ForwordAction">
+		<action name="forwardAction_forward" class="com.isoftstone.gyl.forword.ForwordAction">
 			<result name="role">WEB-INF/jsp/gyl/basedata/role/Role.jsp</result>		
-		
+			<result name="top">WEB-INF/jsp/gyl/frame/top.jsp</result>
+			<result name="center">WEB-INF/jsp/gyl/frame/center.jsp</result>
+			<result name="left">WEB-INF/jsp/gyl/frame/left.jsp</result>
+			<result name="right">WEB-INF/jsp/gyl/frame/right.jsp</result>
 		</action>
 	</package>
 	

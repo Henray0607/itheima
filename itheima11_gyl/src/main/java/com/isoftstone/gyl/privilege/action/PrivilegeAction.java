@@ -11,6 +11,7 @@ import org.apache.struts2.ServletActionContext;
 import org.springframework.stereotype.Controller;
 
 import com.isoftstone.gyl.base.action.BaseAction;
+import com.isoftstone.gyl.domain.basedata.User;
 import com.isoftstone.gyl.domain.privilege.Privilege;
 import com.isoftstone.gyl.domain.privilege.Role;
 import com.isoftstone.gyl.privilege.service.PrivilegeService;
@@ -89,6 +90,13 @@ public class PrivilegeAction extends BaseAction<Role>{
 			}
 		}
 		ActionContext.getContext().getValueStack().push(privilegesAll);
+		return SUCCESS;
+	}
+	public String showMenuitemTreeByUid(){
+		User user = (User)this.getSession().getAttribute("user");
+		System.out.println("username:"+user.getUsername());
+		Collection<Privilege> privileges = this.privilegeService.getMenuItemTreeByUid(user.getUid());
+		ActionContext.getContext().getValueStack().push(new HashSet<Privilege>(privileges));
 		return SUCCESS;
 	}
 }

@@ -54,12 +54,12 @@
         	<img border="0" width="4" height="7" src="style/blue/images/item_point.gif"/>
         	<label id="userImage"></label>
         </div>
-    <div class="ItemBlock_Title1" id="privilegeTitle" style="display: none;"><div class="ItemBlock_Title1">
+    <div class="ItemBlock_Title1" id="roleTitle" style="display: none;"><div class="ItemBlock_Title1">
         	<img border="0" width="4" height="7" src="style/blue/images/item_point.gif" />选择角色</div> 
         </div>
         
         <!-- 表单内容显示 -->
-        <div class="ItemBlockBorder" style="display: none;" id="privilegeContent">
+        <div class="ItemBlockBorder" style="display: none;" id="roleContent">
             <div class="ItemBlock">
                 <table cellpadding="0" cellspacing="0" class="mainForm">
 					<!--表头-->

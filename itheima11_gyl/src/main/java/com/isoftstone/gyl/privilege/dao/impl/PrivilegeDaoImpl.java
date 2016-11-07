@@ -3,6 +3,7 @@ package com.isoftstone.gyl.privilege.dao.impl;
 import java.io.Serializable;
 import java.sql.SQLException;
 import java.util.Collection;
+import java.util.List;
 
 import org.hibernate.HibernateException;
 import org.hibernate.Query;
@@ -41,6 +42,31 @@ public class PrivilegeDaoImpl extends BaseDaoImpl<Privilege> implements Privileg
 				return privileges;
 			}
 		});
+	}
+
+	@Override
+	public Collection<Privilege> getMenuItemTreeByUid(Long uid) {
+		// TODO Auto-generated method stub
+		if(uid.longValue()==1){//说明是管理员
+			List<Privilege> privileges = this.hibernateTemplate.find("from Privilege where type='1'");
+			return privileges;
+		}else{//普通员工
+			return this.hibernateTemplate.
+				find("from Privilege p inner join fetch p.roles r inner join fetch r.users u where u.uid=? and p.type='1'",uid);
+			
+		}
+	}
+
+	@Override
+	public Collection<Privilege> getFunctionByUid(Long uid) {
+		if(uid.longValue()==1){//说明是管理员
+			List<Privilege> privileges = this.hibernateTemplate.find("from Privilege where type='2'");
+			return privileges;
+		}else{//普通员工
+			return this.hibernateTemplate.
+				find("from Privilege p inner join fetch p.roles r inner join fetch r.users u where u.uid=? and p.type='2'",uid);
+			
+		}
 	}
 	
 }

@@ -1,5 +1,8 @@
 package com.isoftstone.gyl.privilege.service.impl;
 
+import java.io.Serializable;
+import java.util.Collection;
+
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
@@ -26,6 +29,13 @@ public class RoleServiceImpl extends BaseServiceImpl<Role> implements RoleServic
 	public void deleteParentNode(Long pid) {
 		// TODO Auto-generated method stub
 		this.roleDao.deleteParentNode(pid);
+	}
+
+	@Override
+	public Collection<Role> getRoleByIds(Serializable[] ids) {
+		// TODO Auto-generated method stub
+		
+		return this.roleDao.getEntities(ids);
 	}
 
 }

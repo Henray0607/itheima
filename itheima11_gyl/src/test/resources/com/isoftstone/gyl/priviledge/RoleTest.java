@@ -7,6 +7,8 @@ import org.junit.Test;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
+import com.isoftstone.gyl.basedata.service.UserService;
+import com.isoftstone.gyl.domain.basedata.User;
 import com.isoftstone.gyl.domain.privilege.Privilege;
 import com.isoftstone.gyl.domain.privilege.Role;
 import com.isoftstone.gyl.privilege.dao.PrivilegeDao;
@@ -48,5 +50,16 @@ public class RoleTest {
 		for (Privilege privilege : privileges) {
 			System.out.println(privilege.getName());
 		}
+	}
+	@Test
+	public void testGetUserRole(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("com/isoftstone/gyl/spring/applicationContext.xml");
+		UserService userService = (UserService)context.getBean("userService");
+		User user = userService.getEntityById(1L);
+		Collection<Role> roles = user.getRoles();
+		for (Role role : roles) {
+			System.out.println(role.getName());
+		}
+		
 	}
 }

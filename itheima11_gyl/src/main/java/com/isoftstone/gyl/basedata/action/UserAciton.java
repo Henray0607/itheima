@@ -5,6 +5,7 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
+import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import com.isoftstone.gyl.base.action.BaseAction;
@@ -15,6 +16,7 @@ import com.isoftstone.gyl.query.basedata.UserQuery;
 import com.opensymphony.xwork2.ActionContext;
 
 @Controller("userAction")
+@Scope("prototype")
 public class UserAciton extends BaseAction<User>{
 
 	@Resource(name="userService")

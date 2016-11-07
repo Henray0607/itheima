@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 import com.isoftstone.gyl.base.action.BaseAction;
 import com.isoftstone.gyl.basedata.service.DepartmentService;
 import com.isoftstone.gyl.domain.basedata.Department;
+import com.isoftstone.gyl.privilege.annotation.PrivilegeInfo;
 import com.isoftstone.gyl.query.PageResult;
 import com.isoftstone.gyl.query.basedata.DepartmentQuery;
 import com.opensymphony.xwork2.ActionContext;
@@ -29,7 +30,8 @@ public class DepartmentAction extends BaseAction<Department>{
 	
 	private DepartmentQuery baseQuery = new DepartmentQuery();
 	
-	
+
+	@PrivilegeInfo(name="部门查询")
 	public String showPageResult(){
 			baseQuery.setCurrentPage(getCurrentPage());
 			System.out.println("current page is: "+baseQuery.getCurrentPage());
