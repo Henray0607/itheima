@@ -34,7 +34,7 @@ var GylUtils = {
 				});
 				$("input[flag='prePage']").unbind("click");
 				$("input[flag='prePage']").bind("click",function(){
-					GylUtils.basedata.dispage.linkNextPage.call(this);
+					GylUtils.basedata.dispage.linkNextPage.call(this)
 				});
 				
 				$("input[flag='nextPage']").unbind("click");
@@ -84,7 +84,102 @@ var GylUtils = {
 		 * 权限模块
 		 */
 		
+		
+		
 		/**
 		 * 业务模块
 		 */
+		//GylUtils.business.disPage.zhubDispageEvent();
+		business_xsydd:{
+			
+			dispage:{
+				/**
+				 * 
+				 */
+				linkNextPage:function(){
+					var currentPage = $(this).attr("param");
+					var totalPages = $("body").data("totalPages");
+					
+					if(currentPage>=totalPages){
+						currentPage=totalPages;
+					}else if(currentPage<=1){
+						currentPage=1;
+					}
+					
+					var url= $("body").data("url");
+				//	xsyddAction_showXsydd.action?query_zhib.xsyddzhubid=
+					window.location.href=url+"?xsyddzhubQuery.currentPage="+currentPage;
+					
+				},
+				linkNextPage_zi:function(){
+					var currentPage = $(this).attr("param");
+					alert("currentPage_web"+currentPage)
+					var totalPages = $("body").data("totalPages");
+					
+					if(currentPage>=totalPages){
+						currentPage=totalPages;
+					}else if(currentPage<=1){
+						currentPage=1;
+					}
+					
+					var url= $("body").data("url");
+				//	xsyddAction_showXsydd.action?query_zhib.xsyddzhubid=
+					window.location.href=url+"?xsyddzhibQuery.currentPage="+currentPage;
+					
+				},
+				pageDisplay:{
+				
+					zhubDisplay:function(){
+
+						$("input[flag='zhub_firstPage']").unbind("click");
+						$("input[flag='zhub_firstPage']").bind("click",function(){
+							GylUtils.business_xsydd.dispage.linkNextPage.call(this);
+						});
+						$("input[flag='zhub_prePage']").unbind("click");
+						$("input[flag='zhub_prePage']").bind("click",function(){
+							GylUtils.business_xsydd.dispage.linkNextPage.call(this)
+						});
+						
+						$("input[flag='zhub_nextPage']").unbind("click");
+						$("input[flag='zhub_nextPage']").bind("click",function(){
+							GylUtils.business_xsydd.dispage.linkNextPage.call(this)
+						});
+						
+						$("input[flag='zhub_lastPage']").unbind("click");
+						$("input[flag='zhub_lastPage']").bind("click",function(){
+							GylUtils.business_xsydd.dispage.linkNextPage.call(this)
+						});
+						
+					},
+					zhibDisplay:function(){
+						$("input[flag='zhib_firstPage']").unbind("click");
+						$("input[flag='zhib_firstPage']").bind("click",function(){
+							GylUtils.business_xsydd.dispage.linkNextPage_zi.call(this);
+						});
+						$("input[flag='zhib_prePage']").unbind("click");
+						$("input[flag='zhib_prePage']").bind("click",function(){
+							GylUtils.business_xsydd.dispage.linkNextPage_zi.call(this);
+						});
+						
+						$("input[flag='zhib_nextPage']").unbind("click");
+						$("input[flag='zhib_nextPage']").bind("click",function(){
+							GylUtils.business_xsydd.dispage.linkNextPage_zi.call(this);
+						});
+						
+						$("input[flag='zhib_lastPage']").unbind("click");
+						$("input[flag='zhib_lastPage']").bind("click",function(){
+							GylUtils.business_xsydd.dispage.linkNextPage_zi.call(this);
+						});
+					}
+				},
+				
+			},
+			initEvent:function(){
+				GylUtils.business_xsydd.dispage.pageDisplay.zhubDisplay();
+				GylUtils.business_xsydd.dispage.pageDisplay.zhibDisplay();
+			}
+			
+		}
+		
+		
 };

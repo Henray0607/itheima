@@ -58,7 +58,7 @@
 		 -->
 		<property name="zdrq"></property>
 	
-		<set name="xsyddzhibs" cascade="all">
+		<set name="xsyddzhibs" cascade="all" lazy="true">
 			<key>
 				<column name="xsyddzhubid"></column>
 			</key>

@@ -54,8 +54,12 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 		/**
 		 * 拼接查询语句
 		 * */
+			if(entry.getKey().contains(".")){
+				hql.append("and "+entry.getKey()+"=:"+entry.getKey().split("\\.")[1]);
+			}else{
+				hql.append("and "+entry.getKey()+"=:"+entry.getKey());
+			}
 			 
-			hql.append(" and "+entry.getKey()+"=:"+entry.getKey());
 		}
 		return this.hibernateTemplate.execute(new HibernateCallback<PageResult<T>>() {
 
@@ -67,7 +71,14 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 				 * */
 				Query query = session.createQuery(hql.toString());
 				for (Entry<String, Object> entry : keyValues.entrySet()) {
-					query.setParameter(entry.getKey(), entry.getValue());
+					if(entry.getKey().contains(".")){
+						/**
+						 * "where xsyddzhub.xsyddzhubid=:xsyddzhubid"的=:后面的赋值
+						 */
+						query.setParameter(entry.getKey().split("\\.")[1], entry.getValue());
+					}else{
+						query.setParameter(entry.getKey(), entry.getValue());
+					}
 				}
 
 				int firstResult = (baseQuery.getCurrentPage()-1)*baseQuery.getPageSize();
@@ -149,13 +160,26 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 				stringBuffer.append(" where 1=1");
 				Map<String,Object> keyValues = baseQuery.buildWhere();
 				for (Entry<String,Object> entry : keyValues.entrySet()) {
-					stringBuffer.append(" and "+entry.getKey()+"=:"+entry.getKey());
+					
+					if(entry.getKey().contains(".")){
+						stringBuffer.append("and "+entry.getKey()+"=:"+entry.getKey().split("\\.")[1]);
+					}else{
+						stringBuffer.append("and "+entry.getKey()+"=:"+entry.getKey());
+					}
+					
 				}
 				
 				Query query = session.createQuery(stringBuffer.toString());
 				for (Entry<String,Object> entry : keyValues.entrySet()) {
+					if(entry.getKey().contains(".")){
+						/**
+						 * "where xsyddzhub.xsyddzhubid=:xsyddzhubid"的=:后面的赋值
+						 */
+						query.setParameter(entry.getKey().split("\\.")[1], entry.getValue());
+					}else{
+						query.setParameter(entry.getKey(), entry.getValue());
+					}
 
-					query.setParameter(entry.getKey(), entry.getValue());
 				}
 				
 				Long count = (Long)query.uniqueResult();

@@ -10,6 +10,7 @@
 	<!-- 基础数据 -->
 	<include file="com/isoftstone/gyl/struts/basedata/struts-department.xml"></include>
 	<include file="com/isoftstone/gyl/struts/basedata/struts-user.xml"></include>
+	<include file="com/isoftstone/gyl/struts/basedata/struts-basedataOther.xml"></include>
 	
 	<!-- 权限模块 -->
 	<include file="com/isoftstone/gyl/struts/basedata/struts-privilege-menuitem.xml"></include>
@@ -25,6 +26,8 @@
 	<!-- 声明拦截器 -->
 	<include file="com/isoftstone/gyl/struts/interceptor/struts-interceptor.xml"></include>	
 	
+	<!-- 业务 -->
+	<include file="com/isoftstone/gyl/struts/business/xsgl/struts-xsydd.xml"></include>	
 	
 	
 </struts>

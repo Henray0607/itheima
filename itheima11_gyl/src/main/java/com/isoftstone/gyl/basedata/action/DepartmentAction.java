@@ -36,7 +36,6 @@ public class DepartmentAction extends BaseAction<Department>{
 			baseQuery.setCurrentPage(getCurrentPage());
 			System.out.println("current page is: "+baseQuery.getCurrentPage());
 			PageResult<Department> departments = departmentService.getPageResult(baseQuery);
-			List<Department> lists = departments.getRows();
 			ActionContext.getContext().put("departments", departments);
 		/*for (Department department : lists) {
 			System.out.println(department.getName());

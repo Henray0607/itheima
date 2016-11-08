@@ -14,6 +14,8 @@
 			<result name="center">WEB-INF/jsp/gyl/frame/center.jsp</result>
 			<result name="left">WEB-INF/jsp/gyl/frame/left.jsp</result>
 			<result name="right">WEB-INF/jsp/gyl/frame/right.jsp</result>
+			<result name="xsydd_add">WEB-INF/jsp/gyl/business/xsydd/add.jsp</result>
+		
 		</action>
 	</package>
 	
