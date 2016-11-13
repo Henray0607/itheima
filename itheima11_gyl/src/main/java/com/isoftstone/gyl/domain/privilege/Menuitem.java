@@ -1,10 +1,6 @@
 package com.isoftstone.gyl.domain.privilege;
 
 import java.io.Serializable;
-import java.util.HashSet;
-import java.util.Set;
-
-import org.apache.struts2.json.annotations.JSON;
 
 public class Menuitem implements Serializable{
 	

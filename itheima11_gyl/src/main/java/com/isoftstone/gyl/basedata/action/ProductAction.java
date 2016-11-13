@@ -1,6 +1,6 @@
 package com.isoftstone.gyl.basedata.action;
 
-import java.util.List;
+import java.util.Collection;
 
 import javax.annotation.Resource;
 
@@ -64,5 +64,19 @@ public class ProductAction extends BaseAction<Product>{
 		return SUCCESS;
 	}
 	
+	public String getAllProduct(){
+		Collection<Product> products = this.productService.getEntities();
+		ActionContext.getContext().getValueStack().push(products);
+		return "json";
+	};
+	public String getProductByIds(){
+		String pids = ServletActionContext.getRequest().getParameter("pids");
+		String[] pidss = pids.split("_");
+		System.out.println(pids);
+		Collection<Product> products = this.productService.getEntitiesByids(pidss);
+		System.out.println("商品个数："+products.size());
+		ActionContext.getContext().getValueStack().push(products);
+		return "json";
+	}
 	
 }

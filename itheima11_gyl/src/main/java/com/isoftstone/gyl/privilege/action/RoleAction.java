@@ -8,11 +8,8 @@ import java.util.Set;
 
 import javax.annotation.Resource;
 
-import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.struts2.ServletActionContext;
-import org.codehaus.jackson.map.util.BeanUtil;
 import org.springframework.beans.BeanUtils;
-import org.springframework.context.ApplicationContext;
 import org.springframework.stereotype.Controller;
 
 import com.isoftstone.gyl.base.action.BaseAction;

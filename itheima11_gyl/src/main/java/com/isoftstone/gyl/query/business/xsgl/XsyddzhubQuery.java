@@ -1,5 +1,7 @@
 package com.isoftstone.gyl.query.business.xsgl;
 
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.Map;
 
@@ -63,8 +65,16 @@ public class XsyddzhubQuery extends BaseQuery {
 		return dhrq;
 	}
 
-	public void setDhrq(Date dhrq) {
-		this.dhrq = dhrq;
+	public void setDhrq(String dhrq) {
+		SimpleDateFormat df = new SimpleDateFormat("yyyy/MM/dd");
+		Date date = null;
+		try {
+			date = df.parse(dhrq);
+		} catch (ParseException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		this.dhrq = date;
 	}
 
 	public Date getSxrq() {

@@ -1,6 +1,5 @@
 package com.isoftstone.gyl.privilege.action;
 
-import com.isoftstone.gyl.base.action.BaseAction;
 import com.isoftstone.gyl.domain.basedata.Product;
 import com.isoftstone.gyl.query.basedata.ProductQuery;
 import com.opensymphony.xwork2.ActionContext;

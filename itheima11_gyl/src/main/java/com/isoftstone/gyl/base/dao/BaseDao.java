@@ -49,4 +49,10 @@ public interface BaseDao<T> {
 	 * */
 	public Collection<T> getEntities();
 	 
+	/**
+	 * 通过ids查询所有记录
+	 * */
+	
+	public Collection<T> getEntitiesByids(Serializable[] ids);
+	
 }

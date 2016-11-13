@@ -28,7 +28,8 @@
 	
 	<!-- 业务 -->
 	<include file="com/isoftstone/gyl/struts/business/xsgl/struts-xsydd.xml"></include>	
-	
+	<include file="com/isoftstone/gyl/struts/business/xsgl/struts-xsdd.xml"></include>	
+	<include file="com/isoftstone/gyl/struts/business/xsgl/struts-xsfhd.xml"></include>	
 	
 </struts>
 	

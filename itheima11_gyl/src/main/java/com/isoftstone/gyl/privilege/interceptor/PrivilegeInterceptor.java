@@ -8,7 +8,6 @@ import com.isoftstone.gyl.domain.privilege.Privilege;
 import com.isoftstone.gyl.privilege.annotation.AnnotationParse;
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionInvocation;
-import com.opensymphony.xwork2.interceptor.Interceptor;
 import com.opensymphony.xwork2.interceptor.MethodFilterInterceptor;
 
 public class PrivilegeInterceptor extends MethodFilterInterceptor{

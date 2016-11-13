@@ -12,6 +12,8 @@
 	<package name="business_xsydd" extends="struts-default" namespace="/">
 		<action name="xsyddAction_*" method="{1}" class="xsyddAction">
 			<result name="success">WEB-INF/jsp/gyl/business/xsydd/list.jsp</result>
+			<result name="addUI">WEB-INF/jsp/gyl/business/xsydd/add.jsp</result>
+			<result name="save_success" type="redirect">xsyddAction_showXsydd.action</result>
 		</action>
 	</package>
 	

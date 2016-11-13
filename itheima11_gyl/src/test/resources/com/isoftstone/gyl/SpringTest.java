@@ -1,6 +1,7 @@
 package com.isoftstone.gyl;
 
 
+import java.util.Collection;
 import java.util.List;
 
 import org.hibernate.Query;
@@ -12,7 +13,11 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.isoftstone.gyl.base.dao.BaseDao;
+import com.isoftstone.gyl.basedata.dao.ProductDao;
 import com.isoftstone.gyl.domain.basedata.Department;
+import com.isoftstone.gyl.domain.basedata.Product;
+import com.isoftstone.gyl.domain.privilege.Privilege;
+import com.isoftstone.gyl.privilege.dao.PrivilegeDao;
 import com.isoftstone.gyl.query.basedata.DepartmentQuery;
 
 public class SpringTest {
@@ -67,6 +72,25 @@ public class SpringTest {
 		
 		
 		
+	}
+	@Test
+	public void testprivilege(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("com/isoftstone/gyl/spring/applicationContext.xml");
+		PrivilegeDao privilegeDao= (PrivilegeDao)context.getBean("privilegeDao");
+		Collection<Privilege> privileges = privilegeDao.getMenuItemTreeByUid(2L);
+		for (Privilege privilege : privileges) {
+			System.out.println(privilege.getId());
+		}
+	}
+	@Test
+	public void testProduct(){
+		Integer[] ids = {2,3};
+		ApplicationContext context = new ClassPathXmlApplicationContext("com/isoftstone/gyl/spring/applicationContext.xml");
+		ProductDao productDao= (ProductDao)context.getBean("productDao");
+		Collection<Product> products = productDao.getEntitiesByids(ids);
+		for (Product product : products) {
+			System.out.println(product.getPid());
+		}
 	}
 	
 }

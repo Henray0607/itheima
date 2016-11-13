@@ -11,15 +11,16 @@
 -->
 <link rel="stylesheet" href="js/jquery.datepick.css" type="text/css">
 <script type="text/javascript" src="js/jquery.datepick.js"></script>
+<script type="text/javascript" src="js/jquery-plugin-table.js"></script>
 <script type="text/javascript" src="js/jquery.datepick-zh-CN.js"></script>
 <script type="text/javascript">
 	$(document).ready(function(){
 	        //在添加的时候，要弹出一个div框选择商品
-			GylUtils.business.add.divProductFrame.divProdctFrameEvent();
-			//声明一个事件，弹出的div的确定事件
-			GylUtils.business.add.divProductFrame.divProductFrameSureEvent();
-			//使用class属性处理  'yy-mm-dd' 设置格式"yyyy/mm/dd"
-			$('#dhrq').datepick({dateFormat: 'yy-mm-dd'}); 
+			GylUtils.business_xsydd.addXsydd.divProductFrame.showProductDivFrame();
+	        //声明一个事件，弹出的div的确定事件
+			GylUtils.business_xsydd.addXsydd.divProductFrame.divProductFrameSureEvent();
+	        //使用class属性处理  'yy-mm-dd' 设置格式"yyyy/mm/dd"
+			//$('#dhrq').datepick({dateFormat: 'yyyy-mm-dd'}); 
 			//$('#sxrq').datepick({dateFormat: 'yy-mm-dd'}); 
 			
 	});
@@ -47,7 +48,7 @@
 </script>
 </head>
 <body>
-<s:form action="xsyddAction_add.action">
+<s:form action="xsyddAction_saveXsydd.action">
 <table id="wrap">
 	<tr>
     	<td id="rig_top" >
@@ -55,15 +56,15 @@
             <table class="content" style="font-size:12px;">
                 <tr>
                     <td class="one" style="color:#00F">客户名称</td>
-                    <td class="inp"><s:textfield id="sxrq" name="query_zhub.khmc" cssClass="current"></s:textfield></td>
+                    <td class="inp"><s:textfield id="sxrq" name="xsyddzhubQuery.khmc" cssClass="current"></s:textfield></td>
                     <td class="one" style="width:66px;">订货日期</td>
-                    <td class="inp"><s:textfield id="dhrq" name="query_zhub.dhrq"></s:textfield></td>
+                    <td class="inp"><s:textfield id="dhrq" name="xsyddzhubQuery.dhrq"></s:textfield></td>
                 </tr>
                 <tr>
                     <td class="one" style="color:#00F">销售部门</td>
-                    <td class="inp"><s:textfield name="query_zhub.xsbm" cssClass="current"></s:textfield></td>
+                    <td class="inp"><s:textfield name="xsyddzhubQuery.xsbm" cssClass="current"></s:textfield></td>
                     <td class="one" style="color:#00F">业务员</td>
-                    <td class="inp"><s:textfield name="query_zhub.ywy" cssClass="current"></s:textfield></td>
+                    <td class="inp"><s:textfield name="xsyddzhubQuery.ywy" cssClass="current"></s:textfield></td>
                 </tr>
             </table>
            </div>
@@ -82,13 +83,13 @@
                     <td field="sl">数量</td>
                     <td field="shulv">税率</td>
                     <td field="dpkl">单品扣率</td>
-					<td field="wsdj">无税单价</td>
-					<td field="hsdj">含税单价</td>
-					<td field="wsje">无税金额</td>
-					<td field="hsje">含税金额</td>
-					<td field="se">税额</td>
-					<td field="zke">折扣额</td>
-					<td field="shdw">收货单位</td>
+					     <td field="wsdj">无税单价</td>
+					     <td field="hsdj">含税单价</td>
+					     <td field="wsje">无税金额</td>
+					     <td field="hsje">含税金额</td>
+					     <td field="se">税额</td>
+					     <td field="zke">折扣额</td>
+					     <td field="shdw">收货单位</td>
                 </tr>
                 <input type="hidden" id="zhib" value="xsyddzhibs"/>
                 <tr align="center">
@@ -109,11 +110,11 @@
 	                        			<tr class="one">
 	                        				<td width="500" item="radio">选择</td>
 	                        			 	<td width="500" item="spmc">商品名称</td>
-						                    <td width="300" item="xh">商品型号</td>
-						                    <td width="300" item="spbm">商品编码</td>
-											<td width="300" item="dw">商品单位</td>
-											<td width="300" item="shulv">税率</td>
-										</tr>
+						                     <td width="300" item="xh">商品型号</td>
+						                     <td width="300" item="spbm">商品编码</td>
+													<td width="300" item="dw">商品单位</td>
+													<td width="300" item="shulv">税率</td>
+												</tr>
 	                        		</table>
 	                        	</div>
 	                        	<div class="btns">
@@ -136,6 +137,7 @@
                     <td style="border-collapse:collapse;  empty-cells:show;" item="zke"><input type="text" style="width:100%;" readonly="true" name="xsyddzhibs[0].zke"/></td>
                     <td style="border-collapse:collapse;  empty-cells:show;" item="shdw"><input type="text" style="width:100%;" name="xsyddzhibs[0].shdw"/></td>
                 </tr>
+                	 
             </table>
            </div>
     	</td>

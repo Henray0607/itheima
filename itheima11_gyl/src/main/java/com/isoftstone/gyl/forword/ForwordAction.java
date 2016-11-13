@@ -1,7 +1,5 @@
 package com.isoftstone.gyl.forword;
 
-import org.springframework.stereotype.Controller;
-
 import com.opensymphony.xwork2.ActionSupport;
 
 public class ForwordAction extends ActionSupport{
@@ -16,6 +14,7 @@ public class ForwordAction extends ActionSupport{
 		this.method = method;
 	}
 
+	@Override
 	public String execute(){
 		return this.method;
 	}

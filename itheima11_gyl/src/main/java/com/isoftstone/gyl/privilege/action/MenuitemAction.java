@@ -1,7 +1,6 @@
 package com.isoftstone.gyl.privilege.action;
 
 import java.util.Collection;
-import java.util.List;
 
 import javax.annotation.Resource;
 

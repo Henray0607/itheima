@@ -204,5 +204,20 @@ public class BaseDaoImpl<T> implements BaseDao<T>{
 			}
 		});
 	}
+	@Override
+	public Collection<T> getEntitiesByids(Serializable[] ids) {
+		// TODO Auto-generated method stub
+		StringBuffer hql = new StringBuffer();
+		hql.append("from Product where pid in ('");
+		for (int i=0;i<ids.length;i++) {
+			if(i==ids.length-1){
+				hql.append(ids[i]+"')");
+				}else{
+					hql.append(ids[i]+"','");
+				}
+		}
+		
+		return this.hibernateTemplate.find(hql.toString());
+	}
 
 }

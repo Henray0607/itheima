@@ -2,7 +2,7 @@
 <%@ include file="/WEB-INF/jsp/gyl/common/common.jsp"%>
 <html>
 <head>
-	<title>部门信息</title>
+	<title>用户信息</title>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 </head>
 <body>
@@ -20,30 +20,59 @@
 
 <!--显示表单内容-->
 <div id=MainArea>
-    <s:form action="departmentAction_addDepartment.action">
+    <s:form action="userAction_addUser.action">
         <div class="ItemBlock_Title1"><!-- 信息说明 --><div class="ItemBlock_Title1">
-        	<img border="0" width="4" height="7" src="${pageContext.request.contextPath}/css/blue/images/item_point.gif" /> 部门信息 </div> 
+        	<img border="0" width="4" height="7" src="${pageContext.request.contextPath}/css/blue/images/item_point.gif" /> 用户信息 </div> 
         </div>
         
         <!-- 表单内容显示 -->
         <div class="ItemBlockBorder">
             <div class="ItemBlock">
                 <table cellpadding="0" cellspacing="0" class="mainForm">
-                    <tr><td>部门名称</td>
-                        <td><s:textfield name="name" cssClass="InputStyle"></s:textfield>
+                    <tr><td width="100">所属部门</td>
+                    	<!-- 
+                    		list属性   数据的来源
+                    		listKey option中的value
+                    		listValue option标签中的内容
+                    	 -->
+                        <td>
+                        	<s:select 
+                        		list="#departments" 
+                        		listKey="did" 
+                        		listValue="name" 
+                        		cssClass="SelectStyle" 
+                        		name="did"></s:select>
+                        </td>
+                    </tr>
+                    <tr><td>登录名</td>
+                        <td><s:textfield name="username" cssClass="InputStyle"></s:textfield>
+							（登录名要唯一）
 						</td>
                     </tr>
-                    <tr><td>部门描述</td>
-                        <td><s:textarea name="description" cssClass="InputStyle"></s:textarea></td>
+					<tr><td>性别</td>
+                        <td>
+                        	<s:radio list="{'男','女'}" name="sex"></s:radio>
+						</td>
+                    </tr>
+					<tr><td>联系电话</td>
+                        <td><s:textfield name="phone" cssClass="InputStyle"></s:textfield></td>
+                    </tr>
+                    <tr><td>E-mail</td>
+                        <td><s:textfield name="email" cssClass="InputStyle"></s:textfield></td>
                     </tr>
                 </table>
             </div>
+        </div>
+        
+		<div class="ItemBlock_Title1"><!-- 信息说明 --><div class="ItemBlock_Title1">
+        	<img border="0" width="4" height="7" src="${pageContext.request.contextPath}/css/blue/images/item_point.gif" /> 岗位设置 </div> 
         </div>
         
 		
         <!-- 表单操作 -->
         <div id="InputDetailBar">
             <input type="image" src="${pageContext.request.contextPath}/images/save.png"/>
+            <a href="javascript:history.go(-1);"><img src="${pageContext.request.contextPath}/images/goBack.png"/></a>
         </div>
     </s:form>
 </div>

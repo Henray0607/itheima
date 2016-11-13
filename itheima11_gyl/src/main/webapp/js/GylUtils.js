@@ -91,6 +91,55 @@ var GylUtils = {
 		 */
 		//GylUtils.business.disPage.zhubDispageEvent();
 		business_xsydd:{
+			addXsydd:{
+				divOpt:{
+					tr:"",
+					showDiv:function(){
+						$("#seek").show();
+						
+						$.fn.GridPanel.createTable({
+							url:'getAllProduct.action',
+							fields:$("#seek *[item]")
+						});
+					},
+					fillValueToField:function(){
+						var checkedRadio = $(":radio:checked");//被选中的radio
+						var divTDS = checkedRadio.parent().siblings("td");//被选中的radio所在的td的兄弟节点
+						//要回显的数据所在的tr
+						var $tr = GylUtils.business_xsydd.addXsydd.divOpt.tr;
+						$.each(divTDS,function(){//遍历每一个divTDS
+							var itemValue = $(this).attr("item");//正在遍历的每一个td的item属性的值
+							if(itemValue=="spmc"){
+								$tr.children("td[item='"+itemValue+"']").children("div").children("input").attr("value",$(this).text());
+							}else{
+								$tr.children("td[item='"+itemValue+"']").children("input").attr("value",$(this).text());
+							}
+						});
+						$("#seek").hide();
+					}
+					
+				},
+				divProductFrame:{
+					showProductDivFrame:function(){
+						$(".searRR").unbind("click");
+						$(".searRR").bind("click",function(){
+						   GylUtils.business_xsydd.addXsydd.divOpt.tr=$(this).parent().parent().parent();
+							GylUtils.business_xsydd.addXsydd.divOpt.showDiv();
+						});
+					},
+					divProductFrameSureEvent:function(){
+						$("#seek").hide();
+						$(".btn").unbind("click");
+						$(".btn").bind("click",function(){
+							//获取选中的radio
+							GylUtils.business_xsydd.addXsydd.divOpt.fillValueToField();
+							return false;
+						});
+					}
+					
+				}
+					
+			},
 			
 			dispage:{
 				/**
@@ -170,6 +219,17 @@ var GylUtils = {
 						$("input[flag='zhib_lastPage']").bind("click",function(){
 							GylUtils.business_xsydd.dispage.linkNextPage_zi.call(this);
 						});
+					},
+					zhubItemClick:function(){
+						$("tr[field='item_zhub']").css("cursor", "pointer")
+						$("tr[field='item_zhub']").unbind("click");
+						$("tr[field='item_zhub']").bind("click",function(){
+							var xsyddzhibQueryFuid = $(this).attr("id")
+							alert(xsyddzhibQueryFuid)
+							var url= $("body").data("url");
+							window.location.href=url+"?xsyddzhibQuery.xsyddzhubid="+xsyddzhibQueryFuid;
+						});
+						
 					}
 				},
 				
@@ -177,9 +237,10 @@ var GylUtils = {
 			initEvent:function(){
 				GylUtils.business_xsydd.dispage.pageDisplay.zhubDisplay();
 				GylUtils.business_xsydd.dispage.pageDisplay.zhibDisplay();
+				GylUtils.business_xsydd.dispage.pageDisplay.zhubItemClick();
+				
 			}
 			
 		}
-		
 		
 };

@@ -20,6 +20,12 @@ public abstract class BaseServiceImpl<T> implements BaseService<T>{
 		return this.getBaseDao().findPageResult(baseQuery);
 	}
 
+	
+	@Override
+	public Collection<T> getEntitiesByids(Serializable[] ids) {
+		// TODO Auto-generated method stub
+		return this.getBaseDao().getEntities(ids);
+	}
 	@Transactional
 	@Override
 	public void saveEntity(T t) {
@@ -57,4 +63,5 @@ public abstract class BaseServiceImpl<T> implements BaseService<T>{
 		return this.getBaseDao().getEntities();
 	}
 
+	
 }

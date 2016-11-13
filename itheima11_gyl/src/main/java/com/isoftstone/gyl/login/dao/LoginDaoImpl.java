@@ -7,7 +7,6 @@ import javax.annotation.Resource;
 import org.springframework.orm.hibernate3.HibernateTemplate;
 import org.springframework.stereotype.Repository;
 
-import com.isoftstone.gyl.basedata.dao.UserDao;
 import com.isoftstone.gyl.domain.basedata.User;
 
 @Repository("loginDao")

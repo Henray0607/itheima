@@ -14,6 +14,15 @@
 			<result name="addUI">WEB-INF/jsp/gyl/basedata/product/add.jsp</result>
 		</action>
 	</package>
+	<!-- 基础守护据：product-json -->
+	<package name="product-json" namespace="/" extends="json-default">
+		<action name="getAllProduct" method="getAllProduct" class="productAction">
+			<result name="json" type="json"></result>
+		</action>
+		<action name="getProductByIds" method="getProductByIds" class="productAction">
+			<result name="json" type="json"></result>
+		</action>
+	</package>
 	
 
 </struts>

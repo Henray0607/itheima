@@ -1,7 +1,6 @@
 package com.isoftstone.gyl.domain.basedata;
 
 import java.io.Serializable;
-import java.util.Set;
 
 public class Product implements Serializable{
 	/**

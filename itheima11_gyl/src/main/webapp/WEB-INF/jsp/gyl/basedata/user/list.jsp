@@ -81,7 +81,7 @@
     </tr>
 </table>
 <div>
-    <a href="departmentAction_addUI.action">
+    <a href="userAction_addUI.action">
     	<img src="${pageContext.request.contextPath}/images/createNew.png" />
     </a>
 </div>

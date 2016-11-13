@@ -7,7 +7,6 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.isoftstone.gyl.domain.privilege.Privilege;
-import com.isoftstone.gyl.privilege.dao.PrivilegeDao;
 import com.isoftstone.gyl.privilege.service.PrivilegeService;
 
 public class PrivilegeTest2 {
@@ -19,7 +18,7 @@ public class PrivilegeTest2 {
 		PrivilegeService privilegeService = (PrivilegeService)context.getBean("privilegeService");
 		Collection<Privilege> privileges = privilegeService.getMenuItemTreeByUid(1L);
 		for (Privilege privilege : privileges) {
-			System.out.println(privilege.getName());
+			System.out.println(privilege.getId());
 		}
 	}
 }

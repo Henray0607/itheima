@@ -4,6 +4,7 @@ import java.util.Collection;
 
 import javax.annotation.Resource;
 
+import org.apache.struts2.ServletActionContext;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -39,7 +40,13 @@ public class LoginAction extends BaseAction<User>{
 			return "index";
 		}
 	}
+	public String logout(){
+		ServletActionContext.getRequest().removeAttribute("user");
+		return "logout";
+	}
 	
-	
+	public String mainUI(){
+		return "main";
+	}
 	
 }

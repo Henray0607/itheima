@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+        "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.ui.theme" value="simple"></constant>
+	<constant name="struts.devMode" value="true"/>
+	<!--  
+	<package name="forword" extends="session_privilege" namespace="/">
+	-->
+	<package name="business_xsdd" extends="struts-default" namespace="/">
+		<action name="xsddAction_*" method="{1}" class="xsddAction">
+			<result name="addUI">WEB-INF/jsp/gyl/business/xsdd/add_copy.jsp</result>
+			<result name="xsdd_save"></result>
+		</action>
+	</package>
+	
+
+</struts>
+	
+	

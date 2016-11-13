@@ -1,7 +1,6 @@
 package com.isoftstone.gyl.privilege.aspect;
 
 import java.util.Collection;
-import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 

@@ -4,6 +4,7 @@ var privilege={
 			treeNodeKey: "id",
 			treeNodeParentKey: "pid",
 			showLine: true,
+			target:"right",
 			root:{ 
 				isRoot:true,
 				nodes:[]

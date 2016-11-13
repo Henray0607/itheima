@@ -1,6 +1,5 @@
 package com.isoftstone.gyl;
 
-import java.util.Collection;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -10,6 +9,9 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import com.isoftstone.gyl.basedata.action.DepartmentAction;
+import com.isoftstone.gyl.business.xsgl.service.XsddService;
+import com.isoftstone.gyl.domain.business.xsgl.Xsddzhib;
+import com.isoftstone.gyl.domain.business.xsgl.Xsddzhub;
 import com.isoftstone.gyl.domain.privilege.Privilege;
 import com.isoftstone.gyl.domain.privilege.Role;
 import com.isoftstone.gyl.privilege.dao.PrivilegeDao;
@@ -47,5 +49,21 @@ public class ActionTest {
 		Role role = roleService.getEntityById(30L);
 		System.out.println(role.getName());
 		
+	}
+	@Test
+	public void testSaveXsddZhu(){
+		ApplicationContext context = new ClassPathXmlApplicationContext("com/isoftstone/gyl/spring/applicationContext.xml");
+		XsddService xsddService = (XsddService)context.getBean("xsddService");
+		Xsddzhub xsddzhub = new Xsddzhub();
+		xsddzhub.setDdh("xsdd_2016111101");
+		Xsddzhib xsddzhib = new Xsddzhib();
+		xsddzhib.setSpmc("dsadsa");
+		Xsddzhib xsddzhib2 = new Xsddzhib();
+		xsddzhib2.setSpmc("aaaaaaaaa");
+		Set<Xsddzhib> xsddzhibs = new HashSet<Xsddzhib>();
+		xsddzhibs.add(xsddzhib);
+		xsddzhibs.add(xsddzhib2);
+		xsddzhub.setXsddzhibs(xsddzhibs);
+		xsddService.addXsddZhub(xsddzhub);
 	}
 }

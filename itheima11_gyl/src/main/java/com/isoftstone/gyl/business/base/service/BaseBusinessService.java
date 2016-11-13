@@ -3,7 +3,6 @@ package com.isoftstone.gyl.business.base.service;
 import java.io.Serializable;
 import java.util.Collection;
 
-import com.isoftstone.gyl.domain.business.xsgl.Xsyddzhub;
 import com.isoftstone.gyl.query.BaseQuery;
 import com.isoftstone.gyl.query.PageResult;
 

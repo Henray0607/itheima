@@ -50,13 +50,13 @@
             <table class="content" style="font-size:12px;">
                 <tr>
                     <td class="one" style="color:#00F;">单据号</td>
-                    <td class="inp"><s:textfield name="query_zhub.ddh"/></td>
+                    <td class="inp"><s:textfield name="xsyddzhubQuery.ddh"/></td>
                     <td class="one" style="width:66px;">订货日期</td>
-                    <td class="inp"><s:textfield name="query_zhub.dhrq" id="dhrq"></s:textfield></td>
+                    <td class="inp"><s:textfield name="xsyddzhubQuery.dhrq" id="dhrq"></s:textfield></td>
                 </tr>
                 <tr>
                     <td style="color:#00F">客户名称</td>
-                    <td class="inp"><s:textfield name="query_zhub.khmc"/></td>
+                    <td class="inp"><s:textfield name="xsyddzhubQuery.khmc"/></td>
                 </tr>
                 <tr>
                     <td class="one" style="color:#00F">销售部门</td>

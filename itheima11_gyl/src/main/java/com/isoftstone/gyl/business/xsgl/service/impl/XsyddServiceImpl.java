@@ -3,6 +3,7 @@ package com.isoftstone.gyl.business.xsgl.service.impl;
 import javax.annotation.Resource;
 
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 import com.isoftstone.gyl.base.dao.BaseDao;
 import com.isoftstone.gyl.business.base.service.impl.BaseBusinessServiceImpl;
@@ -35,4 +36,12 @@ public class XsyddServiceImpl extends BaseBusinessServiceImpl<Xsyddzhub, Xsyddzh
 		return this.xsyddzhibDao;
 	}
 
+	@Transactional
+	@Override
+	public void addXsydd(Xsyddzhub xsyddzhub) {
+		// TODO Auto-generated method stub
+		 this.xsyddzhubDao.saveEntry(xsyddzhub);
+	}
+
+	
 }

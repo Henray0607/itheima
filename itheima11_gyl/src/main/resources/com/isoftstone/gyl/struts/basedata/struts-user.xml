@@ -9,6 +9,8 @@
 	<package name="user" namespace="/" extends="struts-default">
 		<action name="userAction_*" method="{1}" class="userAction">
 			<result name="listAction">WEB-INF/jsp/gyl/basedata/user/list.jsp</result>
+			<result name="addUI">WEB-INF/jsp/gyl/basedata/user/addUser.jsp</result>
+			<result name="addUser_success" type="redirect">userAction_showPageResult.action</result>
 		</action>
 	</package>
 

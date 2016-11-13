@@ -15,4 +15,5 @@ public interface BaseService<T> {
 	public void deleteEntitiesByIds(Serializable[] ids);
 	public void deleteEntity(Serializable id);
 	public Collection<T> getEntities();
+	public Collection<T> getEntitiesByids(Serializable[] ids);
 }

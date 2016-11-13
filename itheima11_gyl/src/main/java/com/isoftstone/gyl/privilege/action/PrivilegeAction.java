@@ -94,8 +94,11 @@ public class PrivilegeAction extends BaseAction<Role>{
 	}
 	public String showMenuitemTreeByUid(){
 		User user = (User)this.getSession().getAttribute("user");
-		System.out.println("username:"+user.getUsername());
 		Collection<Privilege> privileges = this.privilegeService.getMenuItemTreeByUid(user.getUid());
+		Set<Privilege> privilegesSet = new HashSet<Privilege>(privileges);
+		for (Privilege privilege : privileges) {
+			System.out.println(privilege.getId());
+		}
 		ActionContext.getContext().getValueStack().push(new HashSet<Privilege>(privileges));
 		return SUCCESS;
 	}

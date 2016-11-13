@@ -17,6 +17,7 @@ public class MenuitemServiceImpl extends BaseServiceImpl<Menuitem> implements Me
 	private MenuitemDao menuitemDao;
 	
 
+	@Override
 	public BaseDao<Menuitem> getBaseDao() {
 		return this.menuitemDao;
 	}
